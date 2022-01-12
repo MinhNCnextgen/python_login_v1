@@ -2,4 +2,5 @@
 My first ever python project!
 
 Note 1: Go to download branch and download both of the files!
-Note 2: DO NOT edit secret.keys once it is created, it will break the cryptography process!
+
+Note 2: DO NOT edit secret.key once it is created, it will break the cryptography process!
