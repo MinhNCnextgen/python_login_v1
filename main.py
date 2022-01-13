@@ -4,6 +4,7 @@ import uuid
 import data_encryptor as ec
 
 def change_path(dir_name):
+    # Changes the working dir
     tmp_path = os.path.join(os.path.dirname(__file__), dir_name)
     if os.path.isdir(tmp_path) == False:
         os.mkdir(dir_name)
@@ -12,6 +13,7 @@ def change_path(dir_name):
 
 
 def sign_up(user, pasw):
+    # Initiate the sign up process
     user_id = str(uuid.uuid4())
     with open(str(user_id + '.txt'), 'w') as wf:
         wf.write(user + '\n')
@@ -21,11 +23,15 @@ def sign_up(user, pasw):
 
 
 def is_user_legal(name, pasw):
+    # Checks if us and pasw is valid
     invalid_char = '!@#$%^&*()_+{[}]-=|\/;\'\";,.<>?`~'
     for char in invalid_char:
         if (char in name) or (char in pasw):
             print('Name and/or Password must not special characters!')
             return False
+    if (' ' in name) or (' ' in pasw):
+        print('Username and/or Password can\' contain space(s)!')
+        return False
     if len(name) < 3 or len(pasw) < 6:
         print('Name(>=3) and/or Password(>=6) is too short!')
         return False
@@ -40,6 +46,7 @@ def is_user_legal(name, pasw):
 
 
 def log_in(user, pasw):
+    #Initite the log in process
     is_user = False
     is_password = False
     for file in os.listdir():
@@ -63,6 +70,7 @@ def log_in(user, pasw):
 
 
 def main():
+    # Main function
     PATH = change_path('accounts')
     state = True
     while state:
@@ -99,3 +107,4 @@ if __name__ == "__main__":
     if os.path.isfile('secret.key') ==  False:
         ec.make_key()
     main()
+    
