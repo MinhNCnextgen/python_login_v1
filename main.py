@@ -30,7 +30,7 @@ def is_user_legal(name, pasw):
             print('Name and/or Password must not special characters!')
             return False
     if (' ' in name) or (' ' in pasw):
-        print('Username and/or Password can\' contain space(s)!')
+        print('Username and/or Password can\'t contain space(s)!')
         return False
     if len(name) < 3 or len(pasw) < 6:
         print('Name(>=3) and/or Password(>=6) is too short!')
